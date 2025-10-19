@@ -1,40 +1,34 @@
 import java.util.Scanner;
+import java.util.ArrayList;
+
 
 public class taskManager {
-    static String[] tasks = new String[10];
-    static boolean[] done = new boolean[10];
+
+    static ArrayList<String> tasks = new ArrayList<>();
+    static ArrayList<Boolean> done = new ArrayList<>();
+
     static int  taskCount = 0;
 
-    public static void taskList () {
-        if (taskCount == 0 ) {
-            System.out.println("No task found yet .");
-            return;
-        }
 
-        System.out.println("\n ===Tasks Lists ===");
 
-        for (int i = 0; i < taskCount ; i++ ) {
-            String status = done[i] ? "It's done" : "its not done";
-            System.out.println((i + 1) +". " + "Task : "+ tasks[i]+ ", Status : " + status);
+    public static void listTasks () {
+        for (int i = 0 ; i < tasks.size() ; i++ ) {
+            System.out.println(i + ": " + tasks.get(i) + " | Done = " + done.get(i));
+
         }
     }
 
 
-    public static void addTask (String task) {
-        if (taskCount < tasks.length) {
-            tasks[taskCount] = task;
-            done [taskCount] = false;
-            taskCount++;
-            System.out.println("Task Seccussflly added !!" ) ;
-        } else {
-            System.out.println("Tasks hasnt added , sorry .");
-        }
+
+    public static void addTask(String task) {
+        tasks.add(task);
+        done.add(false);
     }
 
 
     public static void markDone (int index) {
         if (index >= 0 && index < taskCount){
-            done[index] = true;
+            done.set(index, true);
             System.out.println("Task Seccussflly marked done !!" ) ;
         }else  {
             System.out.println("Tasks hasnt marked , sorry .");
@@ -42,13 +36,9 @@ public class taskManager {
     }
 
     public static  void removeTask (int index) {
-        if (index >= 0 && index < taskCount){
-            for (int i =index ; i< taskCount -1 ; i++ ) {
-                tasks[i] = tasks[i+1];
-                done [i] = done[i+1];
-
-            }
-            taskCount--;
+        if (index >= 0 && index < tasks.size()) {
+            tasks.remove(index);
+            done.remove(index);
             System.out.println("Task Seccussflly removed !!" ) ;
         }else   {
             System.out.println("you have entered wrong index , sorry");
@@ -81,16 +71,19 @@ public class taskManager {
                     break;
 
                 case 2:
-                    taskList();
+                    listTasks();
                     break;
                 case 3 :
-                    taskList();
+                    listTasks();
                     System.out.println("select the index you want to remove : " ) ;
                     int removeIndex = scanner.nextInt() -1 ;
                     scanner.nextLine();
                     removeTask(removeIndex);
                     break;
                 case 4:
+                   listTasks();
+                    System.out.println("select the index you want to mark : " ) ;
+
                     int doneIndex = scanner.nextInt() -1 ;
                     markDone(doneIndex);
                     break;
