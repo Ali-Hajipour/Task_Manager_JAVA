@@ -15,7 +15,7 @@ public class taskManager {
 
         for (int i = 0; i < taskCount ; i++ ) {
             String status = done[i] ? "It's done" : "its not done";
-            System.out.println((i + 1) + tasks[i]+ ": " + status);
+            System.out.println((i + 1) +". " + "Task : "+ tasks[i]+ ", Status : " + status);
         }
     }
 
@@ -23,7 +23,7 @@ public class taskManager {
     public static void addTask (String task) {
         if (taskCount < tasks.length) {
             tasks[taskCount] = task;
-            done [taskCount] = true;
+            done [taskCount] = false;
             taskCount++;
             System.out.println("Task Seccussflly added !!" ) ;
         } else {
