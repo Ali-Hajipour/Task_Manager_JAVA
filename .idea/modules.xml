@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Task Manager JAVA.iml" filepath="$PROJECT_DIR$/Task Manager JAVA.iml" />
+      <module fileurl="file://$PROJECT_DIR$/cli-task-manager-java.iml" filepath="$PROJECT_DIR$/cli-task-manager-java.iml" />
     </modules>
   </component>
 </project>
